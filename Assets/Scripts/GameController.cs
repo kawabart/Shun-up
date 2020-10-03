@@ -19,8 +19,13 @@ public class GameController : MonoBehaviour
     {
         if (!isPlaying && Input.anyKeyDown)
         {
-            isPlaying = true;
-            circleSpinner.enabled = true;
+            PlayGame();
         }
+    }
+
+    void PlayGame()
+    {
+        isPlaying = true;
+        circleSpinner.enabled = true;
     }
 }
