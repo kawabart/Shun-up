@@ -9,6 +9,8 @@ public class UIController : MonoBehaviour
     TextMeshProUGUI distance;
 
     [SerializeField]
+    LevelManager levelManager;
+    [SerializeField]
     CircleSpinner circleSpinner;
 
     // Start is called before the first frame update
@@ -25,7 +27,7 @@ public class UIController : MonoBehaviour
 
     void UpdateDistance()
     {
-        distance.text = $"{circleSpinner.Distance}/10";// {(int)LevelDistance.Level1}";
+        distance.text = $"{circleSpinner.Distance}/{levelManager.GetCurrentLevel().distance}";
     }
 
     void ColorDistance()
