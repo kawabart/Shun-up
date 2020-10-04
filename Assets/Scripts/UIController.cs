@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
         UpdateDistance();
+        ColorDistance();
     }
 
     void UpdateDistance()
@@ -32,7 +33,9 @@ public class UIController : MonoBehaviour
 
     void ColorDistance()
     {
-        //Color color = new Color()
-        //distance.color = 
+        float percentOfDistance = (float)circleSpinner.Distance / (float)levelManager.GetCurrentLevel().distance;
+        Color color = new Color(r: Mathf.Clamp01(2f - percentOfDistance * 2), g: Mathf.Clamp01(percentOfDistance * 2), b: 0);
+        Debug.Log(color);
+        distance.color = color;
     }
 }
