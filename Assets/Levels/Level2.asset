@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   distance: 20
+  circle: {fileID: 21300000, guid: 1ee10bd3f67dca04f88298692c7add72, type: 3}

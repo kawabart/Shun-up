@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     private LevelManager levelManager;
     [SerializeField]
     private CircleSpinner circleSpinner;
+
     private bool isPlaying = false;
 
     // Start is called before the first frame update
@@ -31,11 +32,20 @@ public class GameController : MonoBehaviour
         circleSpinner.enabled = true;
     }
 
+    void StopGame()
+    {
+        isPlaying = false;
+        circleSpinner.enabled = false;
+    }
+
     void CheckWin()
     {
-        if (circleSpinner.Distance >= levelManager.GetCurrentLevel().distance)
+        bool win = circleSpinner.Distance >= levelManager.GetCurrentLevel().distance;
+
+        if (win)
         {
-            circleSpinner.enabled = false;
+            StopGame();
+            levelManager.GoNextLevel();
         }
     }
 }

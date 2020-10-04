@@ -42,4 +42,12 @@ public class CircleSpinner : MonoBehaviour
         Distance = (int)(angularDistance / 36);
         velocity += acceleration;
     }
+
+    public void ResetCircle()
+    {
+        distance = 0;
+        angularDistance = 0;
+        transform.rotation = Quaternion.identity;
+        velocity = 0;
+    }
 }

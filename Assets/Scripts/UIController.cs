@@ -20,6 +20,7 @@ public class UIController : MonoBehaviour
 
         circleSpinner.DistanceChanged += UpdateDistance;
         circleSpinner.DistanceChanged += ColorDistance;
+        levelManager.LevelChanged += ChangeLevelVisuals;
     }
 
     void UpdateDistance()
@@ -32,5 +33,13 @@ public class UIController : MonoBehaviour
         float percentOfDistance = (float)circleSpinner.Distance / (float)levelManager.GetCurrentLevel().distance;
         Color color = new Color(r: Mathf.Clamp01(2f - percentOfDistance * 2), g: Mathf.Clamp01(percentOfDistance * 2), b: 0);
         distance.color = color;
+    }
+
+    void ChangeLevelVisuals()
+    {
+        circleSpinner.ResetCircle();    //ResetCircle call is here because of execution order
+        UpdateDistance();
+        distance.color = Color.white;
+        circleSpinner.GetComponent<SpriteRenderer>().sprite = levelManager.GetCurrentLevel().circle;
     }
 }
