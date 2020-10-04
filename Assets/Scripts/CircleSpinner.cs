@@ -1,14 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CircleSpinner : MonoBehaviour
 {
-    float velocity;
-    float acceleration;
-    float angularDistance = 0;
+    public int Distance
+    {
+        get => distance;
 
-    public int Distance { get; private set; }
+        private set
+        {
+            if (value != distance)
+            {
+                distance = value;
+                DistanceChanged.Invoke();
+            }
+        }
+    }
+
+    public event Action DistanceChanged;
+
+    private float velocity;
+    private float acceleration;
+    private float angularDistance = 0;
+    private int distance = 0;
 
     // Start is called before the first frame update
     void Start()

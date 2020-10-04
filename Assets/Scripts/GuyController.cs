@@ -19,7 +19,7 @@ public class GuyController : MonoBehaviour
     {
         var vertical = Input.GetAxis("Vertical");
 
-        if (vertical > 0 && isGrounded)
+        if ((vertical > 0 && isGrounded) || (Input.GetButton("Jump") && isGrounded))
             Jump();
     }
 

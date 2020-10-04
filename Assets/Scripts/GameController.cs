@@ -5,13 +5,15 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField]
+    private LevelManager levelManager;
+    [SerializeField]
     private CircleSpinner circleSpinner;
     private bool isPlaying = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        circleSpinner.DistanceChanged += CheckWin;
     }
 
     // Update is called once per frame
@@ -27,5 +29,13 @@ public class GameController : MonoBehaviour
     {
         isPlaying = true;
         circleSpinner.enabled = true;
+    }
+
+    void CheckWin()
+    {
+        if (circleSpinner.Distance >= levelManager.GetCurrentLevel().distance)
+        {
+            circleSpinner.enabled = false;
+        }
     }
 }

@@ -17,13 +17,9 @@ public class UIController : MonoBehaviour
     void Start()
     {
         UpdateDistance();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateDistance();
-        ColorDistance();
+        circleSpinner.DistanceChanged += UpdateDistance;
+        circleSpinner.DistanceChanged += ColorDistance;
     }
 
     void UpdateDistance()
@@ -35,7 +31,6 @@ public class UIController : MonoBehaviour
     {
         float percentOfDistance = (float)circleSpinner.Distance / (float)levelManager.GetCurrentLevel().distance;
         Color color = new Color(r: Mathf.Clamp01(2f - percentOfDistance * 2), g: Mathf.Clamp01(percentOfDistance * 2), b: 0);
-        Debug.Log(color);
         distance.color = color;
     }
 }
