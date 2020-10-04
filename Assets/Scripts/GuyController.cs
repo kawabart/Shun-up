@@ -26,7 +26,7 @@ public class GuyController : MonoBehaviour
     void Jump()
     {
         isGrounded = false;
-        rb.AddForce(Vector2.up * 200);
+        rb.AddForce(Vector2.up * 225);
         Debug.Log("Jump!");
     }
 
