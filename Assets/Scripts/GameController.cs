@@ -8,19 +8,22 @@ public class GameController : MonoBehaviour
     private LevelManager levelManager;
     [SerializeField]
     private CircleSpinner circleSpinner;
+    [SerializeField]
+    private GuyController guyController;
 
     private bool isPlaying = false;
+    private bool gameStopped = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        circleSpinner.DistanceChanged += CheckWin;
+        circleSpinner.DistanceChanged += () => StartCoroutine(CheckWin());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isPlaying && Input.anyKeyDown)
+        if (!gameStopped && !isPlaying && Input.anyKeyDown)
         {
             PlayGame();
         }
@@ -34,18 +37,24 @@ public class GameController : MonoBehaviour
 
     void StopGame()
     {
+        gameStopped = true;
         isPlaying = false;
         circleSpinner.enabled = false;
     }
 
-    void CheckWin()
+    IEnumerator CheckWin()
     {
         bool win = circleSpinner.Distance >= levelManager.GetCurrentLevel().distance;
 
         if (win)
         {
             StopGame();
-            levelManager.GoNextLevel();
+            yield return guyController.PlayLevelChangeSequence();
+            
+            if (levelManager.GoNextLevel())
+                gameStopped = false;
+            //else
+                //It was last level
         }
     }
 }

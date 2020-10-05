@@ -16,14 +16,20 @@ public class LevelManager : MonoBehaviour
         return levels[currentLevel];
     }
 
-    public void GoNextLevel()
+    public bool GoNextLevel()
     {
         currentLevel++;
 
         if (currentLevel >= levels.Length)
+        {
             currentLevel = levels.Length - 1;
+            return false;
+        }
         else
+        {
             LevelChanged.Invoke();
+            return true;
+        }
     }
 
     public void GoPreviousLevel()
