@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 20
   circle: {fileID: 21300000, guid: 1ee10bd3f67dca04f88298692c7add72, type: 3}
+  obstacles:
+  - {fileID: 6419859570098885441, guid: 31c9b625ae3b5e946a190ea39a76daf2, type: 3}
+  - {fileID: 5730914474812128053, guid: d2fe78c5d32245541b5a9ac7e9d49a9c, type: 3}
+  - {fileID: 4807132829101341555, guid: 2d6fff1c24eff0a438956d4dc0455a4e, type: 3}

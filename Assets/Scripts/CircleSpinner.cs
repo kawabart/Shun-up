@@ -49,5 +49,14 @@ public class CircleSpinner : MonoBehaviour
         angularDistance = 0;
         transform.rotation = Quaternion.identity;
         velocity = 0;
+        ClearObstacles();
+    }
+
+    private void ClearObstacles()
+    {
+        foreach (Transform obstacle in transform)
+        {
+            Destroy(obstacle.gameObject);
+        }
     }
 }

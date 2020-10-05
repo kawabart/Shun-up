@@ -7,4 +7,5 @@ public class Level : ScriptableObject
 {
     public int distance;
     public Sprite circle;
+    public GameObject[] obstacles;
 }
