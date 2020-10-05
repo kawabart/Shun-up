@@ -14,6 +14,9 @@ public class GuyController : MonoBehaviour
     private Quaternion startRotation;
 
     [SerializeField]
+    private float jumpForce = 225f;
+
+    [SerializeField]
     private GameObject levelChangeTrigger;
     private bool levelChange = false;
 
@@ -44,7 +47,7 @@ public class GuyController : MonoBehaviour
     private void Jump()
     {
         isGrounded = false;
-        rigidbody.AddForce(Vector2.up * 225);
+        rigidbody.AddForce(Vector2.up * jumpForce);
     }
 
     public void OnObstacleCollision()
