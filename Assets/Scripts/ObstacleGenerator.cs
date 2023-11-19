@@ -10,11 +10,18 @@ public class ObstacleGenerator : MonoBehaviour
     private LevelManager levelManager;
 
     private GameObject[] obstaclePrefabs;
+    private IEnumerator coroutine;
 
     private void OnEnable()
     {
         obstaclePrefabs = levelManager.GetCurrentLevel().obstacles;
-        StartCoroutine(GenerateObstacle(2f));
+        coroutine = GenerateObstacle(2f);
+        StartCoroutine(coroutine);
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(coroutine);
     }
 
     private IEnumerator GenerateObstacle(float interval)
