@@ -58,5 +58,12 @@ public class CircleSpinner : MonoBehaviour
         {
             Destroy(obstacle.gameObject);
         }
+
+        var newObstacles = FindObjectOfType<ObstacleGenerator>().transform.GetComponentsInChildren<Obstacle>();
+
+        foreach (Obstacle obstacle in newObstacles)
+        {
+            Destroy(obstacle.gameObject);   // Clear obstacles not attached to circle yet
+        }
     }
 }
